@@ -123,7 +123,7 @@
         }
         let checkValidateUsername = false;
         let checkValidateEmail = false;
-        if(usersList.length!=0){
+        if(usersList!=null){
             for (let i = 0; i < usersList.length; i++) {
                 if(username===usersList[i].getUsername()){
                     checkValidateUsername = true;
