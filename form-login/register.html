@@ -150,6 +150,7 @@
         let id = usersList[usersList.length-1].getId()+1;
         let name = document.getElementById('name').value;
         let user = new Users(id,name,username,email,password);
+        console.log('user --> ', user)
         usersList.push(user);
         window.localStorage.setItem('list_user', JSON.stringify(usersList));
         window.location.href = '/login.html'
