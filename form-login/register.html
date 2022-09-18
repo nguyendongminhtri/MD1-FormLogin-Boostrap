@@ -149,6 +149,7 @@
     function register() {
         let id;
         if(usersList==null){
+            usersList = []
             id = 1;
         } else {
             id = usersList[usersList.length-1].getId()+1;
