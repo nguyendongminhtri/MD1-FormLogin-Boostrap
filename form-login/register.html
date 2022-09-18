@@ -125,10 +125,10 @@
         let checkValidateEmail = false;
         if(usersList!=null){
             for (let i = 0; i < usersList.length; i++) {
-                if(username===usersList[i].getUsername()){
+                if(username===usersList[i].username){
                     checkValidateUsername = true;
                 }
-                if(email===usersList[i].getEmail()){
+                if(email===usersList[i].email){
                     checkValidateEmail = true;
                 }
             }
@@ -160,7 +160,7 @@
         usersList.push(user);
         window.localStorage.setItem('list_user', JSON.stringify(usersList));
         console.log('userList',usersList)
-        window.location.href = '/login.html'
+        window.location.href = 'login.html'
 
     }
 
