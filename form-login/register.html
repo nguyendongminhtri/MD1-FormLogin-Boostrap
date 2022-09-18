@@ -105,11 +105,13 @@
     let repeatPassword;
     let username;
     let email;
+    let usersList;
+    // let user1 = new Users(1,'Chinh', 'chinhcomhut', 'chinhcomhut@gmail.com', 'main84');
+    // usersList.push(user1);
+    // console.log('list --->',usersList)
     function checkRepeatPassword() {
-        let usersList = [];
-        let user1 = new Users(1,'Chinh', 'chinhcomhut', 'chinhcomhut@gmail.com', 'main84');
-        console.log('list --->',usersList)
-        usersList.push(user1);
+        usersList = JSON.parse(window.localStorage.getItem('list_user'))
+        console.log('list_user === ', usersList)
         password = document.getElementById('password').value;
         repeatPassword = document.getElementById('repeat_password').value;
         username = document.getElementById('username').value;
@@ -121,24 +123,27 @@
         }
         let checkValidateUsername = false;
         let checkValidateEmail = false;
-        for (let i = 0; i < usersList.length; i++) {
-            if(username===usersList[i].getUsername()){
-               checkValidateUsername = true;
+        if(usersList.length!=0){
+            for (let i = 0; i < usersList.length; i++) {
+                if(username===usersList[i].getUsername()){
+                    checkValidateUsername = true;
+                }
+                if(email===usersList[i].getEmail()){
+                    checkValidateEmail = true;
+                }
             }
-            if(email===usersList[i].getEmail()){
-                checkValidateEmail = true;
+            if(checkValidateUsername){
+                document.getElementById('validate_username').innerHTML = '<label style="color: red">The username is existed! Please try again!</label>'
+            } else {
+                document.getElementById('validate_username').innerHTML = '<label style="color: green">The username success!</label>'
+            }
+            if(checkValidateEmail){
+                document.getElementById('validate_email').innerHTML = '<label style="color: red">The email is existed! Please try again!</label>'
+            } else {
+                document.getElementById('validate_email').innerHTML = '<label style="color: green">The email success!</label>'
             }
         }
-        if(checkValidateUsername){
-            document.getElementById('validate_username').innerHTML = '<label style="color: red">The username is existed! Please try again!</label>'
-        } else {
-            document.getElementById('validate_username').innerHTML = '<label style="color: green">The username success!</label>'
-        }
-        if(checkValidateEmail){
-            document.getElementById('validate_email').innerHTML = '<label style="color: red">The email is existed! Please try again!</label>'
-        } else {
-            document.getElementById('validate_email').innerHTML = '<label style="color: green">The email success!</label>'
-        }
+
     }
 
     function register() {
